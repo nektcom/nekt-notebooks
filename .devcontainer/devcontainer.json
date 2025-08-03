@@ -17,6 +17,5 @@
             "label": "Jupyter Notebook",
             "onAutoForward": "openBrowser"
         }
-    },
-    "postCreateCommand": "pip install delta-spark==3.2.1 pyspark==3.5.3 jupyter"
+    }
 }
