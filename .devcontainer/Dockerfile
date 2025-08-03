@@ -14,7 +14,7 @@ RUN apt-get update && \
 ENV JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-# Install Delta Lake, PySpark, and Jupyter
+# Install Delta Lake, PySpark, Jupyter, and Nekt SDK
 RUN pip install delta-spark==3.3.0 pyspark==3.5.5 jupyter git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
 
 # Expose port 8888 for Jupyter Notebook
