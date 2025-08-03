@@ -11,7 +11,7 @@ You will be able to:
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.9
 - [uv](https://docs.astral.sh/uv/) - Modern Python package and project manager
 
 ### Setup
