@@ -3,9 +3,9 @@ FROM mcr.microsoft.com/devcontainers/python:3.9
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y wget gnupg software-properties-common && \
+    apt-get install -y wget gnupg && \
     wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor -o /usr/share/keyrings/adoptium-archive-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/adoptium-archive-keyring.gpg] https://packages.adoptium.net/artifactory/deb focal main" | tee /etc/apt/sources.list.d/adoptium.list && \
+    echo "deb [signed-by=/usr/share/keyrings/adoptium-archive-keyring.gpg] https://packages.adoptium.net/artifactory/deb $(grep VERSION_CODENAME /etc/os-release | cut -d= -f2) main" | tee /etc/apt/sources.list.d/adoptium.list && \
     apt-get update && \
     apt-get install -y temurin-11-jdk && \
     apt-get clean
@@ -14,8 +14,8 @@ RUN apt-get update && \
 ENV JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-# Install Delta Lake, PySpark, Jupyter, and Nekt SDK
-RUN pip install delta-spark==3.3.0 pyspark==3.5.5 jupyter git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
+# Install Jupyter and Nekt SDK
+RUN pip install jupyter git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
 
 # Expose port 8888 for Jupyter Notebook
 EXPOSE 8888
