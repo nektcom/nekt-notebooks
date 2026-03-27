@@ -12,8 +12,9 @@ RUN rm -f /etc/apt/sources.list.d/yarn.list /usr/share/keyrings/yarnpkg-archive-
     apt-get install -y temurin-11-jdk && \
     apt-get clean
 
-# Set environment variables for Java
-ENV JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64
+# Set environment variables for Java (arch-agnostic symlink)
+RUN ln -s /usr/lib/jvm/temurin-11-jdk-* /usr/lib/jvm/temurin-11-jdk
+ENV JAVA_HOME=/usr/lib/jvm/temurin-11-jdk
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Install Jupyter and Nekt SDK
