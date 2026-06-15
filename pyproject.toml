@@ -3,12 +3,10 @@ name = "nekt-notebooks"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9, <3.10"
+requires-python = ">=3.11"
 dependencies = [
-    "delta-spark==3.3.0",
     "jupyter>=1.1.1",
-    "nekt-sdk",
-    "pyspark==3.5.5",
+    "nekt-sdk"
 ]
 
 [tool.uv.sources]
